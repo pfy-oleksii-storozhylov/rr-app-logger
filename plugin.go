@@ -28,7 +28,7 @@ func (p *Plugin) Init(cfg Configurer, log Logger) error {
 	p.log = log.NamedLogger(pluginName)
 
 	p.config = &Config{}
-	err := cfg.UnmarshalKey(pluginName, p.config)
+	err := cfg.UnmarshalKey(pluginName, &p.config)
 	if err != nil {
 		return err
 	}
