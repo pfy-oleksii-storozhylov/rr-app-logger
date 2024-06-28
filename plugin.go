@@ -1,7 +1,6 @@
 package app
 
 import (
-	"github.com/roadrunner-server/http/v4/common"
 	"go.uber.org/zap"
 )
 
@@ -16,7 +15,16 @@ type Plugin struct {
 	config *Config
 }
 
-func (p *Plugin) Init(cfg common.Configurer, log Logger) error {
+type Configurer interface {
+	// UnmarshalKey takes a single key and unmarshal it into a Struct.
+	UnmarshalKey(name string, out any) error
+	// Has checks if a config section exists.
+	Has(name string) bool
+	// RRVersion is the roadrunner current version
+	RRVersion() string
+}
+
+func (p *Plugin) Init(cfg Configurer, log Logger) error {
 	p.log = log.NamedLogger(pluginName)
 
 	p.config = &Config{}

@@ -8,6 +8,7 @@ import (
 	v1 "github.com/roadrunner-server/api/v4/build/applogger/v1"
 
 	"encoding/json"
+
 	"go.uber.org/zap"
 )
 
@@ -119,7 +120,7 @@ func (r *RPC) format(args []*v1.LogAttrs) []zap.Field {
 	fields := make([]zap.Field, 0, len(args))
 
 	for _, v := range args {
-		if r.cfg.parseJson == true {
+		if r.cfg.ParseJson == true {
 			var f interface{}
 			data := []byte(v.GetValue())
 
