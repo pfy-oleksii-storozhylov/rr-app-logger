@@ -7,6 +7,7 @@ import (
 
 	v1 "github.com/roadrunner-server/api/v4/build/applogger/v1"
 
+	"encoding/json"
 	"go.uber.org/zap"
 )
 
@@ -117,7 +118,15 @@ func format(args []*v1.LogAttrs) []zap.Field {
 	fields := make([]zap.Field, 0, len(args))
 
 	for _, v := range args {
-		fields = append(fields, zap.String(v.GetKey(), v.GetValue()))
+		var f interface{}
+		data := []byte(v.GetValue())
+		err := json.Unmarshal(data, &f)
+
+		if err != nil {
+			fields = append(fields, zap.String(v.GetKey(), v.GetValue()))
+		} else {
+			fields = append(fields, zap.Any(v.GetKey(), f))
+		}
 	}
 
 	return fields
