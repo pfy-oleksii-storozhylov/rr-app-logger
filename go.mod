@@ -1,4 +1,4 @@
-module github.com/roadrunner-server/app-logger/v4
+module github.com/pfy-oleksii-storozhylov/rr-app-logger/v4
 
 go 1.22.4
 
