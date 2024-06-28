@@ -16,4 +16,4 @@ logs:
   level: debug
 
 app:
-  parse_json: true
+  allow_unstructured_context: true

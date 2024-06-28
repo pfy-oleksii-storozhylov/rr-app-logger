@@ -104,7 +104,7 @@ func TestAppLoggerWIthParsingJson(t *testing.T) {
 	container := endure.New(slog.LevelDebug)
 
 	vp := &configImpl.Plugin{}
-	vp.Path = "configs/.rr-appl2.yaml"
+	vp.Path = "configs/.rr-appl-allow-unstructured-context.yaml"
 	vp.Prefix = "rr"
 	vp.Version = "v2023.1.0"
 

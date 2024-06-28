@@ -120,7 +120,7 @@ func (r *RPC) format(args []*v1.LogAttrs) []zap.Field {
 	fields := make([]zap.Field, 0, len(args))
 
 	for _, v := range args {
-		if r.cfg.ParseJson == true {
+		if r.cfg.AllowUnstructuredContext == true {
 			var f interface{}
 			data := []byte(v.GetValue())
 

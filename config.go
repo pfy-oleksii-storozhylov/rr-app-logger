@@ -1,14 +1,5 @@
 package app
 
-// your configuration is here
 type Config struct {
-	// yaml, sample mapping to your `key` in the .rr.yaml
-	ParseJson bool `mapstructure:"parse_json"`
+	AllowUnstructuredContext bool `mapstructure:"allow_unstructured_context"`
 }
-
-//// InitDefaults used to initialize default configuration values
-//func (c *Config) InitDefaults() {
-//	//if c.parseJson ==false {
-//	//	c.parseJson = "some_value"
-//	//}
-//}
